@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
+.app {
+  display: grid;
+  grid-template-areas:
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 5rem;
+  height: 100vh;
+}
+
+main {
+  grid-area: main;
+  min-height: calc(100vh-80px);
+  overflow-y: auto;
+}
+
+footer {
+  grid-area: footer;
+  /* margin-top: auto; */
+}
+
+@layer utilities {
+  .animate-gradient {
+    @apply bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500 to-yellow-500;
+    background-size: 200% 200%;
+    animation: gradientAnimation 0.3s ease infinite;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+    -webkit-box-shadow: 0px 9px 50px 34px #41f876;
+    box-shadow: 0px 9px 50px 34px #41f876;
+  }
+  50% {
+    background-position: 100% 50%;
+    -webkit-box-shadow: 0px 9px 50px 34px #98f148;
+    box-shadow: 0px 9px 50px 34px #98f148;
+  }
+  100% {
+    background-position: 0% 50%;
+    -webkit-box-shadow: 0px 9px 50px 34px #ffd700;
+    box-shadow: 0px 9px 50px 34px #ffd700;
+  }
+}
+
+.animate-spin {
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
